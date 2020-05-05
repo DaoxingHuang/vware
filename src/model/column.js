@@ -4,10 +4,10 @@
 import shortid from 'js-shortid';
 
 /**
- * 用于显示的列信息
+ * Column info.
  * @author Daoxing.Huang
  * @public
- * @param {String} text - 行号
+ * @param {String} text - show info
  * @export
  * @class Row
  */

@@ -6,12 +6,12 @@ import shortid from 'js-shortid';
 import {isObj} from '../utils/typeCheck';
 import Column from './column';
 /**
- * 用于显示的行信息
+ * row that will show
  * @author Daoxing.Huang
  * @public
- * @param {Number} text 行号
- * @param {Boolean} selected 是否被选中
- * @param {Object} data 用于显示的数据
+ * @param {Number} text row Number
+ * @param {Boolean} selected checked or not
+ * @param {Object} data the data will receive.
  * @export
  * @class Row
  */
@@ -26,9 +26,9 @@ export default class Row {
   /**
      *
      *
-     * @param {Object} item - 当前行数据
-     * @param {Object} [values=[]] - 转化后列信息
-     * @return
+     * @param {Object} item - row data
+     * @param {Object} [values=[]] valuses list.
+     * @return {Array} the array columns.
      * @memberof Row
      */
   getColumValues(item, values = []) {
@@ -46,27 +46,14 @@ export default class Row {
         coloumns.push(col);
       }
     }
-    // keys.forEach((key) => {
-    //   if(key === 'id'){
-    //     continue;
-    //   }
-    //   const value = cloneItem[key];
-    //   if (isObj(value)) {
-    //     const childValue = this.getColumValues(value, values);
-    //     coloumns.push(...childValue);
-    //   } else {
-    //     const col = new Column(value);
-    //     coloumns.push(col);
-    //   }
-    // });
     return coloumns;
   };
 
   /**
    *
-   * 返回一个全新的 clone对象
+   * get a new clone Row Object
    * @param {Object} value
-   * @returns {Row} Row对象
+   * @returns {Row} Row
    * @memberof Row
    */
   static clone(template, rowNum = -1) {

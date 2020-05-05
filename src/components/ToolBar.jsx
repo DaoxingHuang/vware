@@ -1,35 +1,33 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+/* eslint-disable react/prop-types */
+import React from 'react';
 
 
-export class ToolBar extends Component {
-    static propTypes = {
-        prop: PropTypes
-    };
+/**
+ * Tools
+ * @public
+ * @author Daoxing.Huang
+ * @export
+ * @class ToolBar
+ * @extends {Component}
+ */
 
-
-    render() {
-        const {addEvent,deleteEvent,udpateEvent,lang, langEvent} = this.props;
-        return (
-            <div className="btnContainer">
-                <span class="btngroup">
-                    <button class="btngroup--btn" onClick={addEvent} > {lang["TXT-ADD"] }</button>
-                    <button class="btngroup--btn" onClick={deleteEvent} > {lang["TXT-DELETE"] }</button>
-                    <button class="btngroup--btn" onClick={udpateEvent} >{lang["TXT-UPDATE"]}</button>
-                    <button class="btngroup--btn" onClick={langEvent} >{lang["TXT_LANGEXCHANGE"]}</button>
-                </span>
-            </div>
-        );
-    }
+// eslint-disable-next-line require-jsdoc
+export default function ToolBar(props) {
+  const {addEvent, deleteEvent, udpateEvent, lang, langEvent} = props;
+  return (
+    <div className="btnContainer">
+      <span className="btngroup">
+        <button className="btngroup--btn"
+          onClick={addEvent} > {lang['TXT-ADD'] }</button>
+        <button className="btngroup--btn"
+          onClick={deleteEvent} > {lang['TXT-DELETE'] }</button>
+        <button className="btngroup--btn"
+          onClick={udpateEvent} >{lang['TXT-UPDATE']}</button>
+        <button className="btngroup--btn"
+          onClick={langEvent} >{lang['TXT_LANGEXCHANGE']}</button>
+      </span>
+    </div>
+  );
 }
 
-const mapStateToProps = (state) => ({
-    
-});
 
-const mapDispatchToProps = {
-    
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ToolBar);

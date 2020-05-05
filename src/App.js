@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-no-target-blank */
 import React from 'react';
-import './assets/css/App.scss';
-import Excel from './components/Excel';
+import './assets/css/style.scss';
+import Excel from './containers/Excel';
 
 const data = [{
   id: 1,
