@@ -14,10 +14,8 @@ import Cell from './Cell';
 
 export class Row extends Component {
     static propTypes = {
-      selected: PropTypes.bool.isRequired,
       rowSelectedChange: PropTypes.func.isRequired,
       cellOnChange: PropTypes.func.isRequired,
-      columValues: PropTypes.array.isRequired,
       item: PropTypes.object.isRequired,
       rowNum: PropTypes.number.isRequired,
     }
@@ -57,7 +55,6 @@ export class Row extends Component {
 
     render() {
       const {cellOnChange, item, rowNum} = this.props;
-      debugger;
       const {columValues, id} = item;
       // {rowNum:index+1,id:generateId(),selected:false,value}
       const cells = columValues.map((item, index )=>{
@@ -71,8 +68,8 @@ export class Row extends Component {
           </td>
           <td className="td">
             <input type="checkbox" checked={this.state.checked}
-              defaultChecked={this.state.checked}
-              onChange={this.rowCheckedChange.bind(this)} /></td>
+              onChange={this.rowCheckedChange.bind(this)} />
+          </td>
           {cells}
         </tr>
       );

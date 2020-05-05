@@ -81,6 +81,10 @@ export default class Excel extends Component {
     this.headers = this.getHeaders(data[0]);
   }
 
+  componentDidMount() {
+    // this.editor = new JSONEditor(document.getElementById('jsoneditor'), {});
+  }
+
   /**
    * create template data
    * @public
@@ -157,12 +161,12 @@ export default class Excel extends Component {
     if (!e||!e.target) {
       return;
     }
-    e.preventDefault();
     const checked = e.target.checked;
     const clones = this.state.values.map((item)=>{
       return Object.assign(item, {selected: checked});
     });
     this.setState({values: clones, selectAll: checked});
+    // e.preventDefault();
   }
 
   /**
@@ -256,37 +260,43 @@ export default class Excel extends Component {
     }, 1000);
   }
 
+  textareaChange() {
+
+  }
+
   // eslint-disable-next-line require-jsdoc
   render() {
     const rows=this.state.values.map((item, index)=>{
-      return <Row item={item} cellOnChange = {this.cellInputOnChange}
+      return <Row item={item}
+        cellOnChange = {this.cellInputOnChange}
         rowNum={index+1} rowSelectedChange={this.rowSelectedChange.bind(this)}
         key = {index}></Row>;
     });
 
     return (
-      <div id="demo" className="table-shadow">
-        <table className="table">
-          <thead className="thead">
-            <tr className="tr">
-              <th></th>
-              <th className="th">
-                <input checked={this.state.selectAll} defaultChecked={false}
-                  type="checkbox" onChange={this.headCheckChange.bind(this)} />
-              </th>
-              {this.headers}
-            </tr>
-          </thead>
-          <tbody className="tbody">
-            {rows}
-          </tbody>
-        </table>
-        <ToolBar lang={this.state.lang} addEvent={this.addNewRow.bind(this)}
-          deleteEvent = {this.deleteRow.bind(this)}
-          udpateEvent={this.updateRow.bind(this)}
-          langEvent={this.changeLanguage.bind(this)}></ToolBar>
-      </div>
-
+      <React.Fragment>
+        <div className="table-shadow">
+          <table className="table">
+            <thead className="thead">
+              <tr className="tr">
+                <th className="th"></th>
+                <th className="th">
+                  <input checked={this.state.selectAll}
+                    type="checkbox" onChange={this.headCheckChange.bind(this)}/>
+                </th>
+                {this.headers}
+              </tr>
+            </thead>
+            <tbody className="tbody">
+              {rows}
+            </tbody>
+          </table>
+          <ToolBar lang={this.state.lang} addEvent={this.addNewRow.bind(this)}
+            deleteEvent = {this.deleteRow.bind(this)}
+            udpateEvent={this.updateRow.bind(this)}
+            langEvent={this.changeLanguage.bind(this)}></ToolBar>
+        </div>
+      </React.Fragment>
     );
   }
 }
